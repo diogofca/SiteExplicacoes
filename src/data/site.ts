@@ -19,14 +19,12 @@ export const niveis = [
   {
     nome: '3º ciclo',
     anos: '7º, 8º e 9º ano',
-    // TODO: substituir pelo preço real por hora
-    preco: 'XX',
+    preco: '13',
   },
   {
     nome: 'Secundário',
     anos: '10º, 11º e 12º ano',
-    // TODO: substituir pelo preço real por hora
-    preco: 'XX',
+    preco: '15',
   },
 ] as const;
 

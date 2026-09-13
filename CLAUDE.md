@@ -17,7 +17,7 @@ All user-facing copy is **Portuguese (pt-PT)** and deliberately minimal — the 
 
 ## Architecture
 
-- **`src/data/site.ts`** is the single source of content: name, e-mail, city, levels/prices, steps and nav links. Change copy or prices here, not in components. Prices are `'XX'` placeholders marked with `// TODO`.
+- **`src/data/site.ts`** is the single source of content: name, e-mail, city, levels/prices, steps and nav links. Change copy or prices here, not in components. Prices live here too (`preco`, in €/hour).
 - **`src/pages/index.astro`** stacks the sections in order (Hero → Servicos → ComoFunciona → Precos → Contacto); each lives in `src/components/*.astro` and reads from `site.ts`.
 - **`src/layouts/Base.astro`** owns `<head>` (SEO/OG meta, Google Fonts) and wraps content with `Header`/`Footer`.
 - **`src/styles/global.css`** defines design tokens in a Tailwind `@theme` block (`brand`, `aqua`, `accent`, `ink`, `paper`, `tint`; `font-display`/`font-sans`) and shared `@utility` classes (`container-site`, `section-title`, `section-kicker`, `btn-primary`, `btn-secondary`, `gradient-text`, `bg-grid`). Reuse these instead of re-declaring colors or button styles.
