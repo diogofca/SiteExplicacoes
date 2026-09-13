@@ -1,0 +1,27 @@
+---
+import { passos } from '../data/site';
+---
+
+<section id="como-funciona" class="scroll-mt-20 bg-white py-20 sm:py-28">
+  <div class="container-site">
+    <div class="mx-auto max-w-2xl text-center">
+      <span class="section-kicker">Como funciona</span>
+      <h2 class="section-title">Começar é simples</h2>
+      <p class="mt-4 text-lg text-ink-soft">Três passos e estamos a trabalhar na tua primeira aula.</p>
+    </div>
+
+    <ol class="mt-12 grid gap-6 md:grid-cols-3">
+      {passos.map((p, i) => (
+        <li class="relative rounded-3xl border border-ink/5 bg-paper p-8">
+          <span
+            class="font-display grid size-12 place-items-center rounded-2xl bg-gradient-to-br from-brand to-aqua text-xl font-bold text-white shadow-md shadow-brand/30"
+          >
+            {i + 1}
+          </span>
+          <h3 class="font-display mt-5 text-xl font-bold">{p.titulo}</h3>
+          <p class="mt-2 text-ink-soft">{p.texto}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

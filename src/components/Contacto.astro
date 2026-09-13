@@ -1,0 +1,69 @@
+---
+import { site, mailtoHref } from '../data/site';
+---
+
+<section id="contacto" class="scroll-mt-20 py-20 sm:py-28">
+  <div class="container-site">
+    <div
+      class="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-brand via-brand-deep to-ink px-6 py-16 text-center text-white shadow-2xl shadow-brand/30 sm:px-12"
+    >
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div class="absolute -top-24 -right-24 size-80 rounded-full bg-aqua/40 blur-3xl"></div>
+        <div class="absolute -bottom-24 -left-24 size-80 rounded-full bg-accent/30 blur-3xl"></div>
+      </div>
+
+      <div class="relative">
+        <span class="mb-3 inline-block rounded-full bg-white/15 px-3 py-1 text-xs font-semibold tracking-wide uppercase">
+          Contacto
+        </span>
+        <h2 class="font-display text-3xl font-bold tracking-tight sm:text-4xl">Vamos começar?</h2>
+        <p class="mx-auto mt-4 max-w-xl text-lg text-white/85">
+          Envia-me um e-mail com o <strong class="text-white">ano de escolaridade</strong>, as
+          <strong class="text-white">principais dificuldades</strong> e a tua
+          <strong class="text-white">disponibilidade</strong>. Respondo em menos de 24 horas.
+        </p>
+
+        <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+          <a
+            href={mailtoHref}
+            class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 font-semibold text-ink shadow-lg transition hover:bg-aqua-soft"
+          >
+            <svg class="size-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 7l9 6 9-6" />
+            </svg>
+            Enviar e-mail
+          </a>
+          <button
+            id="copy-email"
+            type="button"
+            data-email={site.email}
+            class="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3 font-semibold text-white transition hover:bg-white/20"
+          >
+            <span id="copy-email-label">Copiar e-mail</span>
+          </button>
+        </div>
+
+        <p class="mt-6 font-mono text-sm text-white/80 select-all">{site.email}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const btn = document.getElementById('copy-email');
+  const label = document.getElementById('copy-email-label');
+
+  btn?.addEventListener('click', async () => {
+    const email = btn.dataset.email ?? '';
+    try {
+      await navigator.clipboard.writeText(email);
+      if (label) label.textContent = 'Copiado ✓';
+    } catch {
+      if (label) label.textContent = email;
+    }
+    setTimeout(() => {
+      if (label) label.textContent = 'Copiar e-mail';
+    }, 2000);
+  });
+</script>

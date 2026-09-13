@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #0f172a;
+  --color-ink-soft: #475569;
+  --color-paper: #fafaff;
+  --color-tint: #f1f0ff;
+
+  --color-brand: #5b4cff;
+  --color-brand-deep: #3b2fd6;
+  --color-brand-soft: #e4e1ff;
+  --color-aqua: #16c6d9;
+  --color-aqua-soft: #d8f7fa;
+  --color-accent: #ffb020;
+  --color-accent-soft: #fff1d6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  @apply bg-paper text-ink font-sans antialiased;
+}
+
+/* Utilitários reutilizados por várias secções */
+@utility container-site {
+  @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+}
+
+@utility section-title {
+  @apply font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl;
+}
+
+@utility section-kicker {
+  @apply mb-3 inline-block rounded-full bg-brand-soft px-3 py-1 text-xs font-semibold tracking-wide text-brand-deep uppercase;
+}
+
+@utility btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 font-semibold text-white shadow-lg shadow-brand/30 transition hover:bg-brand-deep hover:shadow-brand/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand;
+}
+
+@utility btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink/10 bg-white px-6 py-3 font-semibold text-ink transition hover:border-brand hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand;
+}
+
+@utility gradient-text {
+  background-image: linear-gradient(90deg, var(--color-brand) 0%, var(--color-aqua) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Grelha decorativa de fundo (papel quadriculado) */
+@utility bg-grid {
+  background-image:
+    linear-gradient(to right, rgb(91 76 255 / 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(91 76 255 / 0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+}

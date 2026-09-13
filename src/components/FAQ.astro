@@ -1,0 +1,30 @@
+---
+import { faq } from '../data/site';
+---
+
+<section id="faq" class="scroll-mt-20 bg-white py-20 sm:py-28">
+  <div class="container-site grid gap-10 lg:grid-cols-[1fr_2fr]">
+    <div>
+      <span class="section-kicker">Perguntas frequentes</span>
+      <h2 class="section-title">Dúvidas comuns</h2>
+      <p class="mt-4 text-lg text-ink-soft">Não encontras a resposta? Envia-me um e-mail.</p>
+    </div>
+
+    <div class="divide-y divide-ink/10 rounded-3xl border border-ink/5 bg-paper px-6">
+      {faq.map((f) => (
+        <details class="group py-5">
+          <summary
+            class="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-ink [&::-webkit-details-marker]:hidden"
+          >
+            {f.pergunta}
+            <span
+              class="grid size-7 shrink-0 place-items-center rounded-full bg-brand-soft text-brand transition group-open:rotate-45"
+              aria-hidden="true">+</span
+            >
+          </summary>
+          <p class="mt-3 pr-10 text-ink-soft">{f.resposta}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
