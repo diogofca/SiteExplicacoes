@@ -11,6 +11,8 @@ export const site = {
   assuntoEmail: 'Explicações de Matemática',
   cidade: 'Maia',
   faculdade: 'FCUP',
+  mediaFaculdade: '19,2',
+  mediaSecundario: '20',
 } as const;
 
 export const mailtoHref = `mailto:${site.email}?subject=${encodeURIComponent(site.assuntoEmail)}`;
