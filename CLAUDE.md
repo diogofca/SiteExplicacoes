@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-One-page site for Diogo Almeida's private maths tutoring (explicações de Matemática, 7º–12º ano, presencial na Maia). Astro 5 static site with Tailwind CSS v4, hosted on Firebase Hosting. No backend, no tests.
+One-page site for Diogo Almeida's private maths tutoring (explicações de Matemática, 7º–12º ano, na Maia). Astro 5 static site with Tailwind CSS v4, hosted on Firebase Hosting. No backend, no tests.
 
-All user-facing copy is **Portuguese (pt-PT)** and deliberately minimal — the owner wants very little text, no self-promotion (no "about me", grades, or exam-prep marketing), and no mention of online lessons. Keep it that way when editing.
+All user-facing copy is **Portuguese (pt-PT)** and deliberately minimal — the owner wants very little text, no self-promotion (no "about me", grades, or exam-prep marketing), and no mention of lesson modality (say only "na Maia", never "presencial" or "online"). Keep it that way when editing.
 
 ## Commands
 
