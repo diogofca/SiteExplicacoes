@@ -7,7 +7,7 @@ export const site = {
   nome: 'Diogo Almeida',
   titulo: 'Diogo Almeida — Explicações de Matemática',
   descricao: 'Explicações de Matemática do 7º ao 12º ano, na Maia.',
-  email: 'diogocastroalmeid@proton.me',
+  email: 'diogoalmeidaexplicacoes@outlook.com',
   assuntoEmail: 'Explicações de Matemática',
   cidade: 'Maia',
   faculdade: 'FCUP',
