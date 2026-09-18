@@ -1,19 +1,42 @@
 <!doctype html>
-<html>
+<html lang="pt-PT">
 <head>
   <meta charset="utf-8">
-  <script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
+  <title>Flyers — folha A4 (8 × 70 × 100 mm)</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@700&display=swap">
   <style>
-    body { margin: 0; background: #ffffff; }
-    a { color: #3b2fd6; text-decoration: none; } a:hover { color: #5b4cff; }
+    @page { size: A4 portrait; margin: 0; }
+    html, body { margin: 0; padding: 0; background: #e5e7eb; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+    .info { max-width: 210mm; margin: 16px auto 0; font: 14px/1.5 Inter, system-ui, sans-serif; color: #0f172a; }
+    .info kbd { padding: 1px 5px; border: 1px solid #94a3b8; border-radius: 4px; background: #fff; font-size: 12px; }
+
+    .page { position: relative; width: 210mm; height: 297mm; margin: 12px auto 24px; background: #ffffff; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,.15); }
+    /* grelha 2 × 4: células de 378 × 265 px (100 × 70 mm), flyer rodado 90° dentro de cada uma */
+    .grid { position: absolute; left: 5mm; top: 8.3mm; display: grid; grid-template-columns: repeat(2, 378px); grid-auto-rows: 265px; }
+    .cell { position: relative; width: 378px; height: 265px; overflow: hidden; }
+    .cell .flyer { position: absolute; left: 378px; top: 0; transform: rotate(90deg); transform-origin: top left; }
+
+    .mark { position: absolute; background: #0f172a; }
+    .mark.v { width: 0.2mm; height: 4mm; }
+    .mark.h { height: 0.2mm; width: 4mm; }
+
+    @media print {
+      body { background: #fff; }
+      .info { display: none; }
+      .page { margin: 0; box-shadow: none; }
+    }
   </style>
-</helmet>
-<div class="flyer" style="width: 265px; height: 378px; box-sizing: border-box; padding: 22px 22px 20px 22px; background-color: #ffffff; color: #0f172a; font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; display: flex; flex-direction: column; align-items: flex-start; gap: 0;">
+</head>
+<body>
+  <div class="info">
+    <strong>Folha A4 com 8 flyers (70 × 100 mm).</strong>
+    Imprimir com <kbd>⌘P</kbd> → formato A4, margens <em>Nenhumas</em>, escala 100 %, gráficos de fundo ativados. Depois cortar pelas marcas.
+  </div>
+  <div class="page"><div class="grid" id="grid"></div></div>
+
+  <template id="flyer"><div class="flyer" style="width: 265px; height: 378px; box-sizing: border-box; padding: 22px 22px 20px 22px; background-color: #ffffff; color: #0f172a; font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; display: flex; flex-direction: column; align-items: flex-start; gap: 0;">
 
   <div style="display: flex; flex-direction: row; align-items: center; gap: 8px;">
     <div style="display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 7px; background: linear-gradient(135deg, #5b4cff 0%, #16c6d9 100%); color: #ffffff; font-family: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 1;">∑</div>
@@ -45,7 +68,33 @@
   <div style="height: 14px;"></div>
 
   <div style="font-size: 8.5px; color: #94a3b8;">Aluno de Matemática na FCUP</div>
-</div>
-</x-dc>
+</div></template>
+
+  <script>
+    const grid = document.getElementById('grid');
+    const tpl = document.getElementById('flyer');
+    for (let i = 0; i < 8; i++) {
+      const cell = document.createElement('div');
+      cell.className = 'cell';
+      cell.appendChild(tpl.content.cloneNode(true));
+      grid.appendChild(cell);
+    }
+
+    // marcas de corte nas margens (px → mm a 96 dpi)
+    const page = document.querySelector('.page');
+    const mm = (px) => px * 25.4 / 96;
+    const ox = 5, oy = 8.3, cw = mm(378), ch = mm(265);
+    const xs = [0, 1, 2].map((i) => ox + i * cw);
+    const ys = [0, 1, 2, 3, 4].map((i) => oy + i * ch);
+    const mark = (cls, x, y) => {
+      const m = document.createElement('div');
+      m.className = 'mark ' + cls;
+      m.style.left = x + 'mm';
+      m.style.top = y + 'mm';
+      page.appendChild(m);
+    };
+    for (const x of xs) { mark('v', x, oy - 4.5); mark('v', x, oy + 4 * ch + 0.5); }
+    for (const y of ys) { mark('h', ox - 4.5, y); mark('h', ox + 2 * cw + 0.5, y); }
+  </script>
 </body>
 </html>

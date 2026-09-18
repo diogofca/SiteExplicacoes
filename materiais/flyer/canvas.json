@@ -1,6 +1,17 @@
 {
   "artboards": [
-    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 397, "h": 559, "title": "Flyer A6 — 105 × 148 mm", "print": "fixed" }
+    {
+      "file": "Main.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 265,
+      "h": 378,
+      "title": "Flyer ~A7 — 70 × 100 mm",
+      "print": "fixed"
+    }
   ],
-  "launch": { "view": "focused", "file": "Main.dc.html" }
+  "launch": {
+    "view": "focused",
+    "file": "Main.dc.html"
+  }
 }

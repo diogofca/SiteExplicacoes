@@ -32,4 +32,4 @@ Typical change flow: edit → `npm run deploy` → `git commit` + `git push`.
 
 ## Print materials
 
-`materiais/flyer/` holds the source of the A6 mailbox flyer (Claude Design artboard + QR code; its `README.md` links the editable canvas for PNG/PDF export). It shares the site's identity (∑ logo, brand colors, fonts) and the same content rules: no prices, no exam marketing; it currently says only "Maia" (no modality). When the e-mail or site URL changes, update `Main.dc.html` there too (the QR encodes the site URL).
+`materiais/flyer/` holds the source of the 70 × 100 mm mailbox flyer: `Main.dc.html` (Claude Design artboard, 265 × 378 px) and `folha-A4.html` (8-up A4 print sheet with crop marks; the flyer markup is duplicated in its `<template>` — keep both in sync), plus `folha-A4.pdf` exported from it and the QR code. It shares the site's identity (∑ logo, brand colors, fonts) and the same content rules: no prices, no exam marketing. When the e-mail or site URL changes, update both HTML files and re-export the PDF (the QR encodes the site URL).
