@@ -6,10 +6,11 @@
 export const site = {
   nome: 'Diogo Almeida',
   titulo: 'Diogo Almeida — Explicações de Matemática',
-  descricao: 'Explicações de Matemática do 7º ao 12º ano, na Maia.',
+  descricao: 'Explicações de Matemática do 7º ao 12º ano, na Maia ou online.',
   email: 'diogoalmeidaexplicacoes@outlook.com',
   assuntoEmail: 'Explicações de Matemática',
   cidade: 'Maia',
+  local: 'na Maia ou online',
   faculdade: 'FCUP',
   mediaFaculdade: '19,2',
   mediaSecundario: '20',
@@ -33,7 +34,7 @@ export const niveis = [
 export const passos = [
   { titulo: 'Envia-me um e-mail', texto: 'Ano de escolaridade e disponibilidade.' },
   { titulo: 'Combinamos o horário', texto: 'Respondo em menos de 24 horas.' },
-  { titulo: 'Primeira aula', texto: 'Na Maia, ao teu ritmo.' },
+  { titulo: 'Primeira aula', texto: 'Na Maia ou online, ao teu ritmo.' },
 ] as const;
 
 export const navLinks = [
